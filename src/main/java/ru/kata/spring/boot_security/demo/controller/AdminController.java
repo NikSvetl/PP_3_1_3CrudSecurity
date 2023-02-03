@@ -20,7 +20,7 @@ import java.util.Collections;
 
 
 @Controller
-@PreAuthorize(value = "hasAuthority('ROLE_ADMIN')")
+@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 @RequestMapping("/admin")
 public class AdminController {
 
