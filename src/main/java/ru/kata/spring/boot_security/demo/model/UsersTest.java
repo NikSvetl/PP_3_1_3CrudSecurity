@@ -6,10 +6,8 @@ import ru.kata.spring.boot_security.demo.service.RoleService;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Component
@@ -40,15 +38,9 @@ public class UsersTest {
                 "qwerty2", Collections.singleton(role2));
         roleService.addRole(role1);
         roleService.addRole(role2);
-        Set<Role> roles = new HashSet<>();
-        roles.add((Role) roleService.getRoleById(1));
-        roles.add((Role) roleService.getRoleById(2));
-        User user4 = new User("Dak", "Mov", 32, "Mov@mail.ru",
-                "qwert", roles);
 
         userService.addUser(user1);
         userService.addUser(user2);
         userService.addUser(user3);
-        userService.addUser(user4);
     }
 }

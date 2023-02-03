@@ -16,12 +16,11 @@ import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.service.RoleService;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
-
 import java.util.Collections;
 
 
 @Controller
-@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+@PreAuthorize(value = "hasAuthority('ROLE_ADMIN')")
 @RequestMapping("/admin")
 public class AdminController {
 
@@ -54,7 +53,7 @@ public class AdminController {
         user.setRoles(Collections.singleton(roleService.getRoleById(id)));
         userService.addUser(user);
 
-       return  "redirect:/admin";
+        return "redirect:/admin";
 
     }
 

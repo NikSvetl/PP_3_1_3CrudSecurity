@@ -1,7 +1,6 @@
 package ru.kata.spring.boot_security.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.kata.spring.boot_security.demo.model.User;
@@ -47,7 +46,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getListUsers() {return userRepo.findAll(); }
+    public List<User> getListUsers() {
+        return userRepo.findAll();
+    }
 
     @Override
     public User getUserByEmail(String email) {

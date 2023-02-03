@@ -93,7 +93,7 @@ public class User implements UserDetails {
         this.age = age;
     }
 
-    public Set <Role> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
@@ -109,21 +109,14 @@ public class User implements UserDetails {
         this.password = password;
         this.roles = roles;
     }
+
     public String getRolesToString() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (Role role: roles) {
+        for (Role role : roles) {
             stringBuilder.append(role.getRole());
             stringBuilder.append(" ");
         }
 
-        return stringBuilder.toString();
-    }
-
-    public String getRolesToFormDelete() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Role role: roles) {
-            stringBuilder.append(role.getRole()).append('\n');
-        }
         return stringBuilder.toString();
     }
 
