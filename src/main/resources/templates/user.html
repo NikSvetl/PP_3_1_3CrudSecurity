@@ -1,32 +1,91 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
 <head>
-    <meta charset="UTF-8"/>
-    <title>Users</title>
+    <meta charset="UTF-8">
+    <title>User page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 
 <body>
 
-<table>
-    <caption>Users</caption>
-    <tr>
-        <th>ID</th>
-        <th>NAME</th>
-        <th>LASTNAME</th>
-        <th>AGE</th>
-        <th>EMAIL</th>
-        <th>ROLE</th>
-    </tr>
-    </thead>
-    <tbody th:each="user : ${user}">
-    <td th:utext="${user.getId()}"></td>
-    <td th:utext="${user.getName()}"></td>
-    <td th:utext="${user.getLastName()}"></td>
-    <td th:utext="${user.getAge()}"></td>
-    <td th:utext="${user.getEmail()}"></td>
-    <td th:utext="${user.getRolesToString()}"></td>
-</table>
-<br>
-<button class="buttonLogout" onclick="window.location.href = '/logout';">Logout</button>
+<nav class="navbar navbar-dark bg-dark">
+    <div class="text-light bg-dark  mb-0 h5">
+        <td th:utext="${logUser.getEmail()}"></td>
+        <th> with roles:</th>
+        <td th:utext="${logUser.getRolesToString()}"></td>
+    </div>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="btn btn-link" value="Logout">Logout</button>
+    </form>
+</nav>
+
+
+<div class="container-fluid bg-light">
+
+    <div class="row">
+
+        <div class="col-md-2 border-right bg-white">
+
+            <br>
+            <nav class="nav nav-pills flex-column">
+                <div>
+                    <a class="nav-link" sec:authorize="hasRole('ROLE_ADMIN')" href="/admin">Admin</a>
+                </div>
+                <a class="nav-link active" href="/user">User</a>
+            </nav>
+        </div>
+
+        <div class="col-md-10 px-md-5">
+            <br>
+            <h2>User information-page</h2>
+            <div class="border bg-white">
+                <div class="p-3 mb-3 bg-light text-dark font-weight-bold border"><h4>About user</h4></div>
+                <div class="row mx-3">
+                    <table class="table table-striped bg-white">
+                        <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Name</th>
+                            <th>LastName</th>
+                            <th>Age</th>
+                            <th>E-mail</th>
+                            <th>Role</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td th:utext="${logUser.getId()}"></td>
+                            <td th:utext="${logUser.getName()}"></td>
+                            <td th:utext="${logUser.getLastName()}"></td>
+                            <td th:utext="${logUser.getAge()}"></td>
+                            <td th:utext="${logUser.getEmail()}"></td>
+                            <td th:utext="${logUser.getRolesToString()}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
 </body>
 </html>

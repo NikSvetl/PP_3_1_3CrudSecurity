@@ -33,7 +33,7 @@ public class UsersTest {
         User user1 = new User("Ivan", "Ivanov", 23, "Ivanov@mail.ru",
                 "qwerty", allRole);
         User user2 = new User("Vano", "Vanov", 32, "Vanov@mail.ru",
-                "qwerty1", Collections.singleton(role1));
+                "qwe", Collections.singleton(role1));
         User user3 = new User("Max", "Maxov", 32, "Maxov@mail.ru",
                 "qwerty2", Collections.singleton(role2));
         roleService.addRole(role1);
