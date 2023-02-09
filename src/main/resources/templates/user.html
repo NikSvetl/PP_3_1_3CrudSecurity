@@ -9,22 +9,21 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="shortcut icon" type="image/png" href="http://img.icons8.com/color/48/000000/spring-logo.png"/>
 </head>
 
 <body>
 
 <nav class="navbar navbar-dark bg-dark">
-    <div class="text-light bg-dark  mb-0 h5">
-        <td th:utext="${logUser.getEmail()}"></td>
-        <th> with roles:</th>
-        <td th:utext="${logUser.getRolesToString()}"></td>
+    <div id="userAuthor" class="text-light bg-dark mb-0 h5">
+        <ul class="navbar-nav mb-2 mb-lg-0 d-flex">
+
+        </ul>
     </div>
     <form th:action="@{/logout}" method="post">
         <button type="submit" class="btn btn-link" value="Logout">Logout</button>
     </form>
 </nav>
-
 
 <div class="container-fluid bg-light">
 
@@ -58,15 +57,8 @@
                             <th>Role</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <td th:utext="${logUser.getId()}"></td>
-                            <td th:utext="${logUser.getName()}"></td>
-                            <td th:utext="${logUser.getLastName()}"></td>
-                            <td th:utext="${logUser.getAge()}"></td>
-                            <td th:utext="${logUser.getEmail()}"></td>
-                            <td th:utext="${logUser.getRolesToString()}"></td>
-                        </tr>
+                        <tbody id="userInfo">
+
                         </tbody>
                     </table>
                 </div>
@@ -86,6 +78,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+<script src="userInfo.js"></script>
 
 </body>
 </html>
