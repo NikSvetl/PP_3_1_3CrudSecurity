@@ -8,7 +8,6 @@ import ru.kata.spring.boot_security.demo.repositories.UserRepository;
 
 import java.util.List;
 
-
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -25,14 +24,12 @@ public class UserServiceImpl implements UserService {
     public void addUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepo.save(user);
-
     }
 
     @Override
     public void updateUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepo.save(user);
-
     }
 
     @Override

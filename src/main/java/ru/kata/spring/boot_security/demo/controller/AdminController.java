@@ -44,24 +44,15 @@ public class AdminController {
         model.addAttribute("newUser", new User());
         model.addAttribute("updateUser", new User());
         model.addAttribute("roles", roleService.allRoles());
-
         return "admin";
-    }
-
-    @GetMapping("/")
-    public String newUser(@ModelAttribute("newUser") User user, Model model) {
-        model.addAttribute("listRoles", roleService.allRoles());
-        return "redirect:/admin";
     }
 
     @PostMapping()
     public String saveUser(@ModelAttribute("newUser") User user,
-                           @RequestParam("listRoles") int id) {
+                           @RequestParam(required = false, name = "roles") int id) {
         user.setRoles(Collections.singleton(roleService.getRoleById(id)));
         userService.addUser(user);
-
         return "redirect:/admin";
-
     }
 
     @PutMapping()
