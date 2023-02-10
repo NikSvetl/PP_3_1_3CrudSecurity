@@ -15,7 +15,6 @@ public class AdminController {
 
     @GetMapping("")
     public String allUsers() {
-
         return "admin";
     }
 }

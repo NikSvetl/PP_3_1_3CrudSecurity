@@ -25,13 +25,13 @@ import java.util.List;
 @RestController
 @PreAuthorize("hasAuthority('ROLE_ADMIN')")
 @RequestMapping("/api")
-public class RestAdminConroller {
+public class RestAdminController {
 
     private final UserService userService;
     private final RoleService roleService;
 
     @Autowired
-    public RestAdminConroller(UserService userService, RoleService roleService) {
+    public RestAdminController(UserService userService, RoleService roleService) {
         this.userService = userService;
         this.roleService = roleService;
     }

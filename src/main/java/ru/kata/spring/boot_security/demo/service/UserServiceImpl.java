@@ -26,7 +26,6 @@ public class UserServiceImpl implements UserService {
     public void addUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepo.save(user);
-
     }
 
     @Override
@@ -34,7 +33,6 @@ public class UserServiceImpl implements UserService {
     public void updateUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepo.save(user);
-
     }
 
     @Override
@@ -46,7 +44,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public User getUserById(int id) {
-        return userRepo.getById(id);
+        return userRepo.findById(id).get();
     }
 
     @Override

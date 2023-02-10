@@ -30,7 +30,7 @@ function modalDelete(id) {
                 '                               name="id" value="' + user.id + '" readonly>' +
                 '                    </p>' +
                 '                    <p>' +
-                '                        <label>First name</label>' +
+                '                        <label> Name</label>' +
                 '                        <input class="form-control form-control-sm" type="text"' +
                 '                               value="' + user.name + '" readonly>' +
                 '                    </p>' +
