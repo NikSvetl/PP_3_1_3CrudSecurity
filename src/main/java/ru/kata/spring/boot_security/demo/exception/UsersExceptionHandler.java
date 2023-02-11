@@ -9,13 +9,21 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class UsersExceptionHandler {
     @ExceptionHandler
     private ResponseEntity<UserExceptionInfo> handleException (UserNotCreatedException e) {
-        UserExceptionInfo exceptionInfo = new UserExceptionInfo("User saving error");
+        UserExceptionInfo exceptionInfo = new UserExceptionInfo();
+        exceptionInfo.setMessage(e.getMessage());
         return new ResponseEntity<>(exceptionInfo, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler
     private ResponseEntity<UserExceptionInfo> handleException (UserNotFoundException e) {
-        UserExceptionInfo exceptionInfo = new UserExceptionInfo("No such user was found");
+        UserExceptionInfo exceptionInfo = new UserExceptionInfo();
+        exceptionInfo.setMessage(e.getMessage());
         return new ResponseEntity<>(exceptionInfo, HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler
+    private ResponseEntity<UserExceptionInfo> handleException (Exception e) {
+        UserExceptionInfo exceptionInfo = new UserExceptionInfo();
+        exceptionInfo.setMessage(e.getMessage());
+        return new ResponseEntity<>(exceptionInfo, HttpStatus.BAD_REQUEST);
     }
 }

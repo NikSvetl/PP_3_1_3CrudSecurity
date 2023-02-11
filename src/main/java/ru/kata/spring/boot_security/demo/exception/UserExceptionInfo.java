@@ -4,15 +4,15 @@ public class UserExceptionInfo {
 
     private String message;
 
-    public UserExceptionInfo(String message) {
-        this.message = message;
+    public UserExceptionInfo() {
     }
 
     public String getMessage() {
         return message;
     }
-
     public void setMessage(String message) {
         this.message = message;
     }
+
+
 }

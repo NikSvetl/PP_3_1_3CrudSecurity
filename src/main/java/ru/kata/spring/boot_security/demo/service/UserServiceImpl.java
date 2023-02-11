@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             userRepo.save(user);
         } catch (RuntimeException e) {
-            throw new UserNotCreatedException();
+            throw new UserNotCreatedException("Failed to create user : " + user.toString());
         }
     }
 
@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepo.save(user);
         } catch (RuntimeException e) {
-            throw new UserNotCreatedException();
+            throw new UserNotCreatedException("Failed to update user : " + user.toString());
         }
     }
 
@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
         try {
             userRepo.deleteById(id);
         } catch (RuntimeException e) {
-            throw new UserNotFoundException();
+            throw new UserNotFoundException("Failed to delete user with ID : " + id);
         }
     }
 
@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
         try {
             return userRepo.findById(id).get();
         } catch (RuntimeException e) {
-            throw new UserNotFoundException();
+            throw new UserNotFoundException("Failed find user with ID : " + id);
         }
     }
 
@@ -77,7 +77,7 @@ public class UserServiceImpl implements UserService {
         try {
             return userRepo.findUsersByEmail(email);
         } catch (RuntimeException e) {
-            throw new UserNotFoundException();
+            throw new UserNotFoundException("Failed find user with email: " + email);
         }
     }
 }
